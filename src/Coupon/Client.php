@@ -16,7 +16,7 @@ class Client extends BaseApi
      */
     public function categoryList(array $query = [])
     {
-        return $this->httpGet('/coupon/category', $query);
+        return $this->httpGet('/api/coupon/category', $query);
     }
 
     /**
@@ -28,7 +28,7 @@ class Client extends BaseApi
      */
     public function appCategoryList(array $query = [])
     {
-        return $this->httpGet('/coupon/category/app', $query);
+        return $this->httpGet('/api/coupon/category/app', $query);
     }
 
     /**
@@ -40,7 +40,7 @@ class Client extends BaseApi
      */
     public function AppApplyCategory(array $query = [])
     {
-        return $this->httpPost('/coupon/category/app', $query);
+        return $this->httpPost('/api/coupon/category/app', $query);
     }
 
     /**
@@ -52,7 +52,7 @@ class Client extends BaseApi
      */
     public function list(array $query = [])
     {
-        return $this->httpGet('/coupon', $query);
+        return $this->httpGet('/api/coupon', $query);
     }
 
     /**
@@ -64,7 +64,7 @@ class Client extends BaseApi
      */
     public function show(int $id)
     {
-        return $this->httpGet("/coupon/$id");
+        return $this->httpGet("/api/coupon/$id");
     }
 
     /**
@@ -76,7 +76,7 @@ class Client extends BaseApi
      */
     public function create(array $query = [])
     {
-        return $this->httpPost('/coupon', $query);
+        return $this->httpPost('/api/coupon', $query);
     }
 
     /**
@@ -89,7 +89,7 @@ class Client extends BaseApi
      */
     public function update(int $id, array $query = [])
     {
-        return $this->httpPut("/coupon/$id", $query);
+        return $this->httpPut("/api/coupon/$id", $query);
     }
 
     /**
@@ -102,7 +102,7 @@ class Client extends BaseApi
      */
     public function updateDesc(int $id, array $query = [])
     {
-        return $this->httpPut("/coupon/$id/desc", $query);
+        return $this->httpPut("/api/coupon/$id/desc", $query);
     }
 
     /**
@@ -114,7 +114,7 @@ class Client extends BaseApi
      */
     public function batchSend(array $query = [])
     {
-        return $this->httpPost('/coupon/batch/send-buyers', $query);
+        return $this->httpPost('/api/coupon/batch/send-buyers', $query);
     }
 
     /**
@@ -126,7 +126,7 @@ class Client extends BaseApi
      */
     public function send(array $query = [])
     {
-        return $this->httpPost('/coupon/send-buyer', $query);
+        return $this->httpPost('/api/coupon/send-buyer', $query);
     }
 
     /**
@@ -138,7 +138,7 @@ class Client extends BaseApi
      */
     public function sendCoupons(array $query=[])
     {
-        return $this->httpPost('/coupon/batch/send-buyer', $query);
+        return $this->httpPost('/api/coupon/batch/send-buyer', $query);
     }
 
     /**
@@ -150,7 +150,7 @@ class Client extends BaseApi
      */
     public function buyerList(array $query = [])
     {
-        return $this->httpGet('/coupon/buyer/list', $query);
+        return $this->httpGet('/api/coupon/buyer/list', $query);
     }
 
     /**
@@ -163,7 +163,7 @@ class Client extends BaseApi
      */
     public function buyerShow(string $code, array $query = [])
     {
-        return $this->httpGet("/coupon/buyer/$code", $query);
+        return $this->httpGet("/api/coupon/buyer/$code", $query);
     }
 
     /**
@@ -175,7 +175,7 @@ class Client extends BaseApi
      */
     public function buyerUseList(array $query = [])
     {
-        return $this->httpGet('/coupon/buyer/use-list', $query);
+        return $this->httpGet('/api/coupon/buyer/use-list', $query);
     }
 
     /**
@@ -187,7 +187,7 @@ class Client extends BaseApi
      */
     public function calculate(array $query = [])
     {
-        return $this->httpPost('/coupon/buyer/calculate', $query);
+        return $this->httpPost('/api/coupon/buyer/calculate', $query);
     }
 
     /**
@@ -199,7 +199,7 @@ class Client extends BaseApi
      */
     public function lock(array $query = [])
     {
-        return $this->httpPost('/coupon/buyer/lock', $query);
+        return $this->httpPost('/api/coupon/buyer/lock', $query);
     }
 
     /**
@@ -211,7 +211,7 @@ class Client extends BaseApi
      */
     public function cancel(array $query = [])
     {
-        return $this->httpPost('/coupon/buyer/cancel', $query);
+        return $this->httpPost('/api/coupon/buyer/cancel', $query);
     }
 
     /**
@@ -223,7 +223,7 @@ class Client extends BaseApi
      */
     public function reversal(array $query = [])
     {
-        return $this->httpPost('/coupon/buyer/reversal', $query);
+        return $this->httpPost('/api/coupon/buyer/reversal', $query);
     }
 
     /**
@@ -235,7 +235,7 @@ class Client extends BaseApi
      */
     public function useRecord(array $query = [])
     {
-        return $this->httpGet('/coupon/buyer/use-record', $query);
+        return $this->httpGet('/api/coupon/buyer/use-record', $query);
     }
 
 }
