@@ -10,4 +10,3 @@ phpunit.xml.dist export-ignore
 phpunit.xml export-ignore
 .php_cs export-ignore
 composer.lock
-base.php

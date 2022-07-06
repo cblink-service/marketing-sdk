@@ -101,7 +101,7 @@ class Client extends BaseApi
      */
     public function batchSend(array $query = [])
     {
-        return $this->httpPost('/coupon/batch-send-buyer', $query);
+        return $this->httpPost('/coupon/batch/send-buyers', $query);
     }
 
     /**
@@ -114,6 +114,18 @@ class Client extends BaseApi
     public function send(array $query = [])
     {
         return $this->httpPost('/coupon/send-buyer', $query);
+    }
+
+    /**
+     * 一键领取多个优惠券
+     *
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function sendCoupons(array $query=[])
+    {
+        return $this->httpPost('/coupon/batch/send-buyer', $query);
     }
 
     /**
@@ -166,6 +178,18 @@ class Client extends BaseApi
     }
 
     /**
+     * 锁定
+     *
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function lock(array $query = [])
+    {
+        return $this->httpPost('/coupon/buyer/lock', $query);
+    }
+
+    /**
      * 核销
      *
      * @param array $query
@@ -187,6 +211,18 @@ class Client extends BaseApi
     public function reversal(array $query = [])
     {
         return $this->httpPost('/coupon/buyer/reversal', $query);
+    }
+
+    /**
+     * 用户使用记录
+     *
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function useRecord(array $query = [])
+    {
+        return $this->httpGet('/coupon/buyer/use-record', $query);
     }
 
 }
