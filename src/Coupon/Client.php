@@ -93,6 +93,19 @@ class Client extends BaseApi
     }
 
     /**
+     * 应用修改优惠券描述
+     *
+     * @param int $id
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function updateDesc(int $id, array $query = [])
+    {
+        return $this->httpPut("/coupon/$id/desc", $query);
+    }
+
+    /**
      * 应用批量发送优惠券
      *
      * @param array $query
