@@ -14,7 +14,7 @@ use Hyperf\Utils\Collection;
  */
 class MarketingApp extends Container
 {
-    protected $providers = [
+    protected array $providers = [
         Kernel\ServiceProvider::class,
         Coupon\ServiceProvider::class,
     ];
