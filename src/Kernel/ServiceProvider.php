@@ -2,7 +2,6 @@
 
 namespace Cblink\Service\Marketing\Kernel;
 
-use Cblink\Service\Foundation\AccessToken;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
