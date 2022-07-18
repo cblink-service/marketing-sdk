@@ -11,11 +11,15 @@ use Hyperf\Utils\Collection;
  * @property-read \Cblink\Service\Foundation\AccessToken $access_token
  *
  * @property-read Coupon\Client $coupon       优惠券
+ * @property-read CouponCenter\Client $couponCenter       领券中心
+ * @property-read Custom\Client $custom       定制化接口
  */
 class MarketingApp extends Container
 {
     protected array $providers = [
         Kernel\ServiceProvider::class,
         Coupon\ServiceProvider::class,
+        CouponCenter\ServiceProvider::class,
+        Custom\ServiceProvider::class,
     ];
 }
