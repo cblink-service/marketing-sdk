@@ -40,7 +40,7 @@ class Client extends BaseApi
      */
     public function show($id)
     {
-        return $this->httpGet(sprintf('/api/coupon-center/receive-list/%s', $id));
+        return $this->httpGet(sprintf('/api/coupon-center/%s', $id));
     }
 
     /**
