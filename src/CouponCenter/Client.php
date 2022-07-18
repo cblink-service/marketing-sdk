@@ -50,7 +50,7 @@ class Client extends BaseApi
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function store($query)
+    public function create($query)
     {
         return $this->httpPost('/api/coupon-center', $query);
     }
