@@ -81,6 +81,18 @@ class Client extends BaseApi
     }
 
     /**
+     * 根据 id 删除领券中心
+     *
+     * @param $id
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function deleteById($id)
+    {
+        return $this->httpDelete(sprintf('/api/coupon-center/%s', $id));
+    }
+
+    /**
      * 领取优惠券
      *
      * @param $query
