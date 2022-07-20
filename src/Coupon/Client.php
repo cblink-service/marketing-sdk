@@ -106,6 +106,19 @@ class Client extends BaseApi
     }
 
     /**
+     * 应用修改优惠券状态
+     *
+     * @param int $id
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function updateStatus(int $id, array $query = [])
+    {
+        return $this->httpPut("/api/coupon/$id/status", $query);
+    }
+
+    /**
      * 应用批量发送优惠券
      *
      * @param array $query
