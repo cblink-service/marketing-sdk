@@ -28,7 +28,7 @@ class Client extends BaseApi
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function configStore(int $type, array $query = [])
+    public function configCreate(int $type, array $query = [])
     {
         return $this->httpPost(sprintf('/api/salesman/config/%s', $type), $query);
     }
