@@ -153,7 +153,7 @@ class Client extends BaseApi
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function salesmanStore(array $query=[])
+    public function salesmanCreate(array $query=[])
     {
         return $this->httpPost('/api/salesman', $query);
     }
