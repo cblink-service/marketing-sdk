@@ -121,5 +121,68 @@ class Client extends BaseApi
         return $this->httpDelete(sprintf('/api/salesman/level/%s', $id));
     }
 
+    /**
+     * 分销员列表
+     *
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function salesmanlist(array $query = [])
+    {
+        return $this->httpGet('/api/salesman', $query);
+    }
+
+    /**
+     * 分销员详情
+     *
+     * @param int $id
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function salesmanShow(int $id, array $query=[])
+    {
+        return $this->httpGet(sprintf('/api/salesman/%s', $id), $query);
+    }
+
+    /**
+     * 分销员新增
+     *
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function salesmanStore(array $query=[])
+    {
+        return $this->httpPost('/api/salesman', $query);
+    }
+
+    /**
+     * 分销员子分销员列表
+     *
+     * @param int $id
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function salesmanChildList(int $id, array $query=[])
+    {
+        return $this->httpGet(sprintf('/api/salesman/%s/child-list', $id), $query);
+    }
+
+    /**
+     * 分销员客户列表
+     *
+     * @param int $id
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function salesmanCustomList(int $id, array $query=[])
+    {
+        return $this->httpGet(sprintf('/api/salesman/%s/custom-list', $id), $query);
+    }
+
 
 }
