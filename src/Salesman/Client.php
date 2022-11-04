@@ -184,5 +184,40 @@ class Client extends BaseApi
         return $this->httpGet(sprintf('/api/salesman/%s/custom-list', $id), $query);
     }
 
+    /**
+     * 分销员客户列表
+     *
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function withdrawalList(array $query=[])
+    {
+        return $this->httpGet('/api/salesman/withdrawal', $query);
+    }
 
+    /**
+     * 申请提现
+     *
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function withdrawalCreate(array $query=[])
+    {
+        return $this->httpPost('/api/salesman/withdrawal', $query);
+    }
+
+    /**
+     * 修改提现状态
+     *
+     * @param $id
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function updateStatus($id, array $query = [])
+    {
+        return $this->httpPut(sprintf('/api/salesman/withdrawal/%s', $id), $query);
+    }
 }
