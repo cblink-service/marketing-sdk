@@ -199,6 +199,19 @@ class Client extends BaseApi
     }
 
     /**
+     * 余额变动记录列表
+     *
+     * @param $id
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function salesmanBalanceList($id)
+    {
+        return $this->httpGet(sprintf('/api/salesman/%s/balance/list', $id));
+    }
+
+    /**
      * 分销员客户列表
      *
      * @param array $query
