@@ -201,13 +201,14 @@ class Client extends BaseApi
     /**
      * 余额变动记录列表
      *
-     * @param $id
+     * @param       $id
+     * @param array $query
      *
      * @return mixed
      */
-    public function salesmanBalanceList($id)
+    public function salesmanBalanceList($id, array $query = [])
     {
-        return $this->httpGet(sprintf('/api/salesman/%s/balance/list', $id));
+        return $this->httpGet(sprintf('/api/salesman/%s/balance/list', $id), $query);
     }
 
     /**
