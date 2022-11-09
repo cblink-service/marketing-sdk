@@ -202,9 +202,8 @@ class Client extends BaseApi
      * 余额变动记录列表
      *
      * @param $id
-     * @param array $query
-     * @return array|\Psr\Http\Message\ResponseInterface|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
      */
     public function salesmanBalanceList($id)
     {
