@@ -247,4 +247,16 @@ class Client extends BaseApi
     {
         return $this->httpPut(sprintf('/api/salesman/withdrawal/%s', $id), $query);
     }
+
+    /**
+     * 统计分销员相关数据
+     *
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function statisticsBySalesman(array $query = [])
+    {
+        return $this->httpPost('/api/salesman/statistics/salesman', $query);
+    }
 }
