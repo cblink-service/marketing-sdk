@@ -247,4 +247,52 @@ class Client extends BaseApi
     {
         return $this->httpPut(sprintf('/api/salesman/withdrawal/%s', $id), $query);
     }
+
+    /**
+     * 分销订单列表
+     *
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function tradeList(array $query = [])
+    {
+        return $this->httpGet('/api/salesman/trade', $query);
+    }
+
+    /**
+     * 创建分销单
+     *
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function createTrade(array $query = [])
+    {
+        return $this->httpPost('/api/salesman/trade', $query);
+    }
+
+    /**
+     * 订单退款
+     *
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function refundTrade(array $query = [])
+    {
+        return $this->httpPost('/api/salesman/trade/refund', $query);
+    }
+
+    /**
+     * 订单结算
+     *
+     * @param array $query
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function settleTrade(array $query = [])
+    {
+        return $this->httpPost('/api/salesman/trade/settle', $query);
+    }
 }
