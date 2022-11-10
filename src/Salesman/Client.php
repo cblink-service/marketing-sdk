@@ -288,13 +288,13 @@ class Client extends BaseApi
     /**
      * 创建分销单
      *
-     * @param array $query
+     * @param array $data
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function createTrade(array $query = [])
+    public function createTrade(array $data = [])
     {
-        return $this->httpPost('/api/salesman/trade', $query);
+        return $this->httpPost('/api/salesman/trade', $data);
     }
 
     /**
