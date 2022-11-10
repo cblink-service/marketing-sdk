@@ -275,12 +275,12 @@ class Client extends BaseApi
     /**
      * 分销订单列表
      *
-     * @param int $id
+     * @param $id
      * @param array $query
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function tradeDetail(int $id, array $query = [])
+    public function tradeDetail($id, array $query = [])
     {
         return $this->httpGet(sprintf('/api/salesman/trade/%s', $id), $query);
     }
