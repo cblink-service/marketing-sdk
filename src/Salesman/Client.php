@@ -3,6 +3,8 @@
 namespace Cblink\Service\Marketing\Salesman;
 
 use Cblink\Service\Marketing\Kernel\BaseApi;
+use GuzzleHttp\Exception\GuzzleException;
+use Psr\Http\Message\ResponseInterface;
 
 class Client extends BaseApi
 {
@@ -24,13 +26,13 @@ class Client extends BaseApi
      * 分销基础配置保存
      *
      * @param int $type
-     * @param array $query
+     * @param array $data
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function configCreate(int $type, array $query = [])
+    public function configCreate(int $type, array $data = [])
     {
-        return $this->httpPost(sprintf('/api/salesman/config/%s', $type), $query);
+        return $this->httpPost(sprintf('/api/salesman/config/%s', $type), $data);
     }
 
     /**
@@ -49,11 +51,11 @@ class Client extends BaseApi
      * 等级配置详情
      *
      * @param $id
-     * @param $query
-     * @return array|\Psr\Http\Message\ResponseInterface|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param array $query
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
      */
-    public function levelShow($id, $query = [])
+    public function levelShow($id, array $query = [])
     {
         return $this->httpGet(sprintf('/api/salesman/level/%s', $id), $query);
     }
@@ -62,11 +64,11 @@ class Client extends BaseApi
      * 等级升级配置详情
      *
      * @param $id
-     * @param $query
+     * @param array $query
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function levelRuleShow($id, $query = [])
+    public function levelRuleShow($id, array $query = [])
     {
         return $this->httpGet(sprintf('/api/salesman/level/%s/rule', $id), $query);
     }
@@ -75,11 +77,11 @@ class Client extends BaseApi
      * 等级奖励配置详情
      *
      * @param $id
-     * @param $query
+     * @param array $query
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function levelRewardShow($id, $query = [])
+    public function levelRewardShow($id, array $query = [])
     {
         return $this->httpGet(sprintf('/api/salesman/level/%s/reward', $id), $query);
     }
@@ -87,38 +89,39 @@ class Client extends BaseApi
     /**
      * 等级配置新增
      *
-     * @param $query
+     * @param array $data
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function levelCreate($query = [])
+    public function levelCreate(array $data = [])
     {
-        return $this->httpPost('/api/salesman/level', $query);
+        return $this->httpPost('/api/salesman/level', $data);
     }
 
     /**
      * 等级配置编辑
      *
      * @param $id
-     * @param $query
+     * @param array $data
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function levelUpdate($id, $query = [])
+    public function levelUpdate($id, array $data = [])
     {
-        return $this->httpPut(sprintf('/api/salesman/level/%s', $id), $query);
+        return $this->httpPut(sprintf('/api/salesman/level/%s', $id), $data);
     }
 
     /**
      * 等级配置删除
      *
      * @param $id
-     * @return array|\Psr\Http\Message\ResponseInterface|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param array $query
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
      */
-    public function levelDelete($id)
+    public function levelDelete($id, array $query = [])
     {
-        return $this->httpDelete(sprintf('/api/salesman/level/%s', $id));
+        return $this->httpDelete(sprintf('/api/salesman/level/%s', $id), $query);
     }
 
     /**
@@ -128,7 +131,7 @@ class Client extends BaseApi
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function salesmanlist(array $query = [])
+    public function salesmanList(array $query = [])
     {
         return $this->httpGet('/api/salesman', $query);
     }
@@ -141,7 +144,7 @@ class Client extends BaseApi
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function salesmanShow(int $id, array $query=[])
+    public function salesmanShow(int $id, array $query = [])
     {
         return $this->httpGet(sprintf('/api/salesman/%s', $id), $query);
     }
@@ -149,39 +152,50 @@ class Client extends BaseApi
     /**
      * 分销员新增
      *
-     * @param array $query
+     * @param array $data
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function salesmanCreate(array $query=[])
+    public function salesmanCreate(array $data = [])
     {
-        return $this->httpPost('/api/salesman', $query);
-    }
-
-    /**
-     * 分销员子分销员列表
-     *
-     * @param int $id
-     * @param array $query
-     * @return array|\Psr\Http\Message\ResponseInterface|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    public function salesmanChildList(int $id, array $query=[])
-    {
-        return $this->httpGet(sprintf('/api/salesman/%s/child-list', $id), $query);
+        return $this->httpPost('/api/salesman', $data);
     }
 
     /**
      * 分销员客户列表
      *
-     * @param int $id
      * @param array $query
-     * @return array|\Psr\Http\Message\ResponseInterface|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
      */
-    public function salesmanCustomList(int $id, array $query=[])
+    public function customList(array $query = [])
     {
-        return $this->httpGet(sprintf('/api/salesman/%s/custom-list', $id), $query);
+        return $this->httpGet('/api/salesman/custom', $query);
+    }
+
+    /**
+     * 分销员列表
+     *
+     * @param $id
+     * @param array $query
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function customShow($id, array $query = [])
+    {
+        return $this->httpGet(sprintf('/api/salesman/custom/%s', $id), $query);
+    }
+
+    /**
+     * 创建客户
+     *
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function customStore(array $data = [])
+    {
+        return $this->httpPost('/api/salesman/custom', $data);
     }
 
 
@@ -193,7 +207,7 @@ class Client extends BaseApi
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function salesmanUpdateBalance($id, array $query = [])
+    public function salesmanBalanceUpdate($id, array $query = [])
     {
         return $this->httpPut(sprintf('/api/salesman/%s/balance', $id), $query);
     }
@@ -205,20 +219,21 @@ class Client extends BaseApi
      * @param array $query
      *
      * @return mixed
+     * @throws GuzzleException
      */
-    public function salesmanBalanceList($id, array $query = [])
+    public function serialList($id, array $query = [])
     {
-        return $this->httpGet(sprintf('/api/salesman/%s/balance/list', $id), $query);
+        return $this->httpGet(sprintf('/api/salesman/%s/balance/serial', $id), $query);
     }
 
     /**
-     * 分销员客户列表
+     * 分销员提现列表
      *
      * @param array $query
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function withdrawalList(array $query=[])
+    public function withdrawalList(array $query = [])
     {
         return $this->httpGet('/api/salesman/withdrawal', $query);
     }
@@ -226,38 +241,26 @@ class Client extends BaseApi
     /**
      * 申请提现
      *
-     * @param array $query
+     * @param array $data
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function withdrawalCreate(array $query=[])
+    public function withdrawalCreate(array $data = [])
     {
-        return $this->httpPost('/api/salesman/withdrawal', $query);
-    }
-
-    /**
-     * 修改提现状态
-     *
-     * @param $id
-     * @param array $query
-     * @return array|\Psr\Http\Message\ResponseInterface|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    public function withdrawalUpdateStatus($id, array $query = [])
-    {
-        return $this->httpPut(sprintf('/api/salesman/withdrawal/%s', $id), $query);
+        return $this->httpPost('/api/salesman/withdrawal', $data);
     }
 
     /**
      * 统计分销员相关数据
      *
+     * @param $id
      * @param array $query
-     * @return array|\Psr\Http\Message\ResponseInterface|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
      */
-    public function statisticsBySalesman(array $query = [])
+    public function salesmanStatisticsShow($id, array $query = [])
     {
-        return $this->httpPost('/api/salesman/statistics/salesman', $query);
+        return $this->httpGet(sprintf('/api/salesman/%s/statistics', $id), $query);
     }
 
     /**
@@ -280,7 +283,7 @@ class Client extends BaseApi
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function tradeDetail($id, array $query = [])
+    public function tradeShow($id, array $query = [])
     {
         return $this->httpGet(sprintf('/api/salesman/trade/%s', $id), $query);
     }
@@ -300,24 +303,24 @@ class Client extends BaseApi
     /**
      * 订单退款
      *
-     * @param array $query
+     * @param array $data
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function refundTrade(array $query = [])
+    public function refundTrade(array $data = [])
     {
-        return $this->httpPost('/api/salesman/trade/refund', $query);
+        return $this->httpPost('/api/salesman/trade/refund', $data);
     }
 
     /**
      * 订单结算
      *
-     * @param array $query
+     * @param array $data
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function settleTrade(array $query = [])
+    public function settleTrade(array $data = [])
     {
-        return $this->httpPost('/api/salesman/trade/settle', $query);
+        return $this->httpPost('/api/salesman/trade/settle', $data);
     }
 }
