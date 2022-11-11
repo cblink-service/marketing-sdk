@@ -136,12 +136,12 @@ class Client extends BaseApi
     /**
      * 分销员详情
      *
-     * @param int $id
+     * @param $id
      * @param array $query
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function salesmanShow(int $id, array $query=[])
+    public function salesmanShow($id, array $query=[])
     {
         return $this->httpGet(sprintf('/api/salesman/%s', $id), $query);
     }
