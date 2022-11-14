@@ -233,7 +233,7 @@ class Client extends BaseApi
      * @return array|\Psr\Http\Message\ResponseInterface|string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function withdrawalList(array $query = [])
+    public function listWithdrawal(array $query = [])
     {
         return $this->httpGet('/api/salesman/withdrawal', $query);
     }
@@ -241,13 +241,66 @@ class Client extends BaseApi
     /**
      * 申请提现
      *
+     * @param $id
      * @param array $data
-     * @return array|\Psr\Http\Message\ResponseInterface|string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
      */
-    public function withdrawalCreate(array $data = [])
+    public function applyWithdrawal($id, array $data = [])
     {
-        return $this->httpPost('/api/salesman/withdrawal', $data);
+        return $this->httpPost(sprintf('/api/salesman/%s/withdrawal', $id), $data);
+    }
+
+    /**
+     * 通过提现
+     *
+     * @param $id
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function passWithdrawalAudit($id, array $data = [])
+    {
+        return $this->httpPost(sprintf('/api/salesman/withdrawal/%s/audit/pass', $id), $data);
+    }
+
+    /**
+     * 拒绝提现
+     *
+     * @param $id
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function refuseWithdrawalAudit($id, array $data = [])
+    {
+        return $this->httpPost(sprintf('/api/salesman/withdrawal/%s/audit/refuse', $id), $data);
+    }
+
+    /**
+     * 拒绝提现
+     *
+     * @param $id
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function failWithdrawal($id, array $data = [])
+    {
+        return $this->httpPost(sprintf('/api/salesman/withdrawal/%s/fail', $id), $data);
+    }
+
+    /**
+     * 完成提现
+     *
+     * @param $id
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function completeWithdrawal($id, array $data = [])
+    {
+        return $this->httpPost(sprintf('/api/salesman/withdrawal/%s/complete', $id), $data);
     }
 
     /**
