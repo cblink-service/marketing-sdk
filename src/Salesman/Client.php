@@ -162,6 +162,18 @@ class Client extends BaseApi
     }
 
     /**
+     * 分销员升级
+     *
+     * @param array $data
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function salesmanUpgrade(array $data = [])
+    {
+        return $this->httpPost('/api/salesman/upgrade', $data);
+    }
+
+    /**
      * 分销员客户列表
      *
      * @param array $query
