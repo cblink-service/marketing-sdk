@@ -323,4 +323,28 @@ class Client extends BaseApi
     {
         return $this->httpPost('/api/salesman/trade/settle', $data);
     }
+
+    /**
+     * 新增奖励记录
+     *
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function sendLevelReward(array $data = [])
+    {
+        return $this->httpPost('/api/salesman/level/send-reward', $data);
+    }
+
+    /**
+     * 查询等级奖励
+     *
+     * @param array $query
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function getSalesmanLevelReward(array $query = [])
+    {
+        return $this->httpGet('/api/salesman/level/salesman-reward', $query);
+    }
 }
