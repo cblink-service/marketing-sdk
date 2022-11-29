@@ -150,6 +150,17 @@ class Client extends BaseApi
     }
 
     /**
+     * @param $id
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function updateSalesman($id, array $data=[])
+    {
+        return $this->httpPut(sprintf('/api/salesman/%s', $id), $data);
+    }
+
+    /**
      * 分销员新增
      *
      * @param array $data
@@ -210,6 +221,17 @@ class Client extends BaseApi
         return $this->httpPost('/api/salesman/custom', $data);
     }
 
+    /**
+     * 编辑客户
+     *
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function updateCustom(array $data = [])
+    {
+        return $this->httpPut('/api/salesman/custom', $data);
+    }
 
     /**
      * 修改分销员余额
