@@ -263,4 +263,16 @@ class Client extends BaseApi
         return $this->httpGet(sprintf('/api/coupon/%s/marketing-list', $id), $query);
     }
 
+    /**
+     * 优惠券统计
+     *
+     * @param array $query
+     *
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getCouponCount( array $query = [])
+    {
+        return $this->httpGet('/api/coupon/buyer/coupon-count', $query);
+    }
 }
