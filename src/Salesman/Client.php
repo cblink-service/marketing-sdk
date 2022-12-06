@@ -150,6 +150,17 @@ class Client extends BaseApi
     }
 
     /**
+     * @param $id
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function updateSalesman($id, array $data=[])
+    {
+        return $this->httpPut(sprintf('/api/salesman/%s', $id), $data);
+    }
+
+    /**
      * 分销员新增
      *
      * @param array $data
@@ -210,6 +221,17 @@ class Client extends BaseApi
         return $this->httpPost('/api/salesman/custom', $data);
     }
 
+    /**
+     * 编辑客户
+     *
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function updateCustom(array $data = [])
+    {
+        return $this->httpPut('/api/salesman/custom', $data);
+    }
 
     /**
      * 修改分销员余额
@@ -387,5 +409,29 @@ class Client extends BaseApi
     public function settleTrade(array $data = [])
     {
         return $this->httpPost('/api/salesman/trade/settle', $data);
+    }
+
+    /**
+     * 新增奖励记录
+     *
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function sendLevelReward(array $data = [])
+    {
+        return $this->httpPost('/api/salesman/level/send-reward', $data);
+    }
+
+    /**
+     * 查询等级奖励
+     *
+     * @param array $query
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function getSalesmanLevelReward(array $query = [])
+    {
+        return $this->httpGet('/api/salesman/level/salesman-reward', $query);
     }
 }
