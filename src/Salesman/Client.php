@@ -434,4 +434,28 @@ class Client extends BaseApi
     {
         return $this->httpGet('/api/salesman/level/salesman-reward', $query);
     }
+
+    /**
+     * 更新分销员全局佣金比例
+     *
+     * @param array $query
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function updateCommissionRatio(array $data = [])
+    {
+        return $this->httpPut('/api/salesman/commission/ratio', $data);
+    }
+
+    /**
+     * 获取分销员全局佣金比例
+     *
+     * @param int $id
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function getCommissionRatio($id)
+    {
+        return $this->httpGet(sprintf('/api/salesman/commission/ratio/%s', $id));
+    }
 }
