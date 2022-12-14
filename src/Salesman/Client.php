@@ -442,9 +442,9 @@ class Client extends BaseApi
      * @return array|ResponseInterface|string
      * @throws GuzzleException
      */
-    public function updateCommissionRatio(array $data = [])
+    public function updateCommissionRatio($id, array $data = [])
     {
-        return $this->httpPut('/api/salesman/commission/ratio', $data);
+        return $this->httpPut(sprintf('/api/salesman/commission/ratio/%s', $id), $data);
     }
 
     /**
