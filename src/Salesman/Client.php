@@ -444,7 +444,7 @@ class Client extends BaseApi
      */
     public function updateCommissionRatio($id, array $data = [])
     {
-        return $this->httpPut(sprintf('/api/salesman/commission/ratio/%s', $id), $data);
+        return $this->httpPut(sprintf('/api/salesman/%s/commission/ratio', $id), $data);
     }
 
     /**
@@ -456,6 +456,6 @@ class Client extends BaseApi
      */
     public function getCommissionRatio($id)
     {
-        return $this->httpGet(sprintf('/api/salesman/commission/ratio/%s', $id));
+        return $this->httpGet(sprintf('/api/salesman/%s/commission/ratio', $id));
     }
 }
