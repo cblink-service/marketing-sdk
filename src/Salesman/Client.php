@@ -458,4 +458,65 @@ class Client extends BaseApi
     {
         return $this->httpGet(sprintf('/api/salesman/%s/commission/ratio', $id));
     }
+
+    /**
+     * 获取分销员审核记录列表
+     *
+     * @param array $query
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function getAuditRecordList(array $query = [])
+    {
+        return $this->httpGet('/api/salesman/audit-record', $query);
+    }
+
+    /**
+     * 获取分销员审核记录统计
+     *
+     * @param array $query
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function getAuditRecordStatistics(array $query = [])
+    {
+        return $this->httpGet('/api/salesman/audit-record/statistics', $query);
+    }
+
+    /**
+     * 获取分销员审核记录详情
+     *
+     * @param int $id
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function getAuditRecordShow($id)
+    {
+        return $this->httpGet(sprintf('/api/salesman/audit-record/%s', $id));
+    }
+
+    /**
+     * 更新分销员审核记录
+     *
+     * @param int $id
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function updateAuditRecord($id, array $data = [])
+    {
+        return $this->httpPut(sprintf('/api/salesman/audit-record/%s', $id), $data);
+    }
+
+    /**
+     * 创建分销员审核记录
+     *
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function createAuditRecord(array $data = [])
+    {
+        return $this->httpPost('/api/salesman/audit-record', $data);
+    }
 }
