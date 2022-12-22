@@ -487,12 +487,13 @@ class Client extends BaseApi
      * 获取分销员审核记录详情
      *
      * @param int $id
+     * @param array $query
      * @return array|ResponseInterface|string
      * @throws GuzzleException
      */
-    public function getAuditRecordShow($id)
+    public function getAuditRecordShow($id, array $query)
     {
-        return $this->httpGet(sprintf('/api/salesman/audit-record/%s', $id));
+        return $this->httpGet(sprintf('/api/salesman/audit-record/%s', $id), $query);
     }
 
     /**
