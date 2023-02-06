@@ -119,6 +119,19 @@ class Client extends BaseApi
     }
 
     /**
+     * 应用修改自增数量
+     *
+     * @param int $id
+     * @param array $data
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function incStock(int $id, array $data = [])
+    {
+        return $this->httpPut("/api/coupon/$id/stock", $data);
+    }
+
+    /**
      * 应用批量发送优惠券
      *
      * @param array $query
