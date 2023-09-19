@@ -12,6 +12,7 @@ use Hyperf\Utils\Collection;
  *
  * @property-read Coupon\Client $coupon       优惠券
  * @property-read CouponCenter\Client $couponCenter       领券中心
+ * @property-read CouponActivity\Client $couponActivity   优惠券活动
  * @property-read Custom\Client $custom       定制化接口
  * @property-read Salesman\Client $salesman       分销
  */
@@ -21,6 +22,7 @@ class MarketingApp extends Container
         Kernel\ServiceProvider::class,
         Coupon\ServiceProvider::class,
         CouponCenter\ServiceProvider::class,
+        CouponActivity\ServiceProvider::class,
         Custom\ServiceProvider::class,
         Salesman\ServiceProvider::class,
     ];
