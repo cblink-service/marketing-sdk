@@ -32,6 +32,18 @@ class Client extends BaseApi
         return $this->httpGet('/api/coupon-activity/usable-list', $query);
     }
 
+    /**
+     * 发券
+     *
+     * @param array $data
+     * @return array|\Psr\Http\Message\ResponseInterface|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function sendCoupon(array $data = [])
+    {
+        return $this->httpPost('/api/coupon-activity/send-coupon', $data);
+    }
+
     public function records(array $query=[])
     {
         return $this->httpGet('/api/coupon-activity/records', $query);
